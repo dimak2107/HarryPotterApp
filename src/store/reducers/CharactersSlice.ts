@@ -15,22 +15,9 @@ const initialState: CharacterState = {
 };
 
 export const CharacterSlice = createSlice({
-  name: "character",
+  name: "characters",
   initialState,
-  reducers: {
-    // charactersFetching(state) {
-    //   state.isLoading = true;
-    // },
-    // charactersFetchingSuccess(state, action: PayloadAction<Character[]>) {
-    //   state.isLoading = false;
-    //   state.error = "";
-    //   state.characters = action.payload;
-    // },
-    // charactersFetchingError(state, action: PayloadAction<string>) {
-    //   state.isLoading = false;
-    //   state.error = action.payload;
-    // },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchCharacters.pending, (state) => {

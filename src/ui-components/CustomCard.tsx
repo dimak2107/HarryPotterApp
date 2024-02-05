@@ -8,6 +8,7 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
+import { Link } from "react-router-dom";
 
 interface CustomCardProps {
   character: Character;
@@ -16,7 +17,7 @@ interface CustomCardProps {
 
 const CustomCard = ({ character }: CustomCardProps) => {
   return (
-    <Card sx={{ maxWidth: 345, display: "flex", flexDirection: "column" }}>
+    <Card sx={{ maxWidth: 200, display: "flex", flexDirection: "column" }}>
       <CardMedia
         component="img"
         alt="no_photo"
@@ -36,9 +37,9 @@ const CustomCard = ({ character }: CustomCardProps) => {
             : "не обладает магическими способностями"}
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions style={{ marginTop: "auto" }}>
         <Button size="small" fullWidth>
-          Подробнее
+          <Link to={`/characters/${character.id}`}>Подробнее</Link>
         </Button>
       </CardActions>
     </Card>

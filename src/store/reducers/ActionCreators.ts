@@ -30,3 +30,18 @@ export const fetchCharacters = createAsyncThunk(
     }
   }
 );
+
+// export const fetchCharacterByID = createAsyncThunk(
+//   "characters/fetchByID",
+//   async (characterID: string, thunkAPI) => {
+//     try {
+//       const res = await axios.get<Character>(
+//         `https://hp-api.onrender.com/api/characters/${characterID}`
+//       );
+
+//       return res.data;
+//     } catch (e) {
+//       return thunkAPI.rejectWithValue("ERROR");
+//     }
+//   }
+// );
