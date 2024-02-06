@@ -21,9 +21,9 @@ function App() {
         <Route path="/signin" element={<Signin />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/history" element={<History />} />
+        <Route path="/characters/:id" element={<CharacterDetailed />} />
         <Route path="*" element={<Homepage />} />
       </Routes>
-      <Main />
     </>
   );
 }
