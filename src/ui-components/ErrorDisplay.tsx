@@ -20,7 +20,7 @@ function ErrorDisplay({fieldWithError}: ErrorDisplayProps) {
       {fieldWithError?.type === 'minLength' && (
         <Typography
           component="span"
-          variant="h2"
+          variant="body1"
           color="error"
         >
           Минимальная длина 5

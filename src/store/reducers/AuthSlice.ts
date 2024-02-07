@@ -24,6 +24,7 @@ export const authSlice = createSlice({
   reducers: {
     registration(state) {
       state.isLoading = true;
+      state.error = '';
     },
     registrationSuccess(state) {
       state.isLoading = false;
@@ -34,6 +35,7 @@ export const authSlice = createSlice({
     },
     login(state) {
       state.isLoading = true;
+      state.error = '';
     },
     loginSuccess(state) {
       state.isLoading = false;
