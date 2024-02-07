@@ -1,47 +1,24 @@
 import axios from "axios";
-import { AppDispatch } from "../store";
 import { Character } from "../../models/Character";
-import { CharacterSlice } from "./CharactersSlice";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-// export const fetchCharacters = async (dispatch: AppDispatch) => {
-//   try {
-//     dispatch(CharacterSlice.actions.charactersFetching());
-//     const res = await axios.get<Character[]>(
-//       "https://hp-api.onrender.com/api/characters"
-//     );
-//     dispatch(CharacterSlice.actions.charactersFetchingSuccess(res.data));
-//   } catch (e: any) {
-//     dispatch(CharacterSlice.actions.charactersFetchingError(e.message));
-//   }
-// };
+export interface GetCharactersProps {
+  data: Character[];
+  links: { self: string };
+  meta: { copyright: string; generated_at: string };
+}
 
 export const fetchCharacters = createAsyncThunk(
   "characters/fetchAll",
-  async (_, thunkAPI) => {
+  async (name: string, thunkAPI) => {
     try {
-      const res = await axios.get<Character[]>(
-        "https://hp-api.onrender.com/api/characters"
+      const { data } = await axios.get<GetCharactersProps>(
+        `https://api.potterdb.com/v1/characters/?page[size]=20;filter[name_cont]=${name}`
       );
-
-      return res.data;
+      console.log(data);
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue("ERROR");
     }
   }
 );
-
-// export const fetchCharacterByID = createAsyncThunk(
-//   "characters/fetchByID",
-//   async (characterID: string, thunkAPI) => {
-//     try {
-//       const res = await axios.get<Character>(
-//         `https://hp-api.onrender.com/api/characters/${characterID}`
-//       );
-
-//       return res.data;
-//     } catch (e) {
-//       return thunkAPI.rejectWithValue("ERROR");
-//     }
-//   }
-// );

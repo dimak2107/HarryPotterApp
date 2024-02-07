@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
 import Header from "./components/Header";
-import Main from "./components/Main";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Favorites from "./pages/Favorites";
 import History from "./pages/History";
 import Homepage from "./pages/Homepage";
@@ -11,7 +10,6 @@ import Signup from "./pages/Signup";
 import CharacterDetailed from "./pages/CharacterDetailed";
 
 function App() {
-  // const {} = useAppSelector((state) => state.characterReducer.characters);
   return (
     <>
       <Header />
