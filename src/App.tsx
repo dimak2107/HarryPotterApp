@@ -1,17 +1,23 @@
-import React from "react";
+import { useEffect } from "react";
 import "./App.css";
 import Header from "./components/Header";
-import Main from "./components/Main";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Favorites from "./pages/Favorites";
 import History from "./pages/History";
 import Homepage from "./pages/Homepage";
 import Signin from "./pages/Signin";
-import Signup from "./pages/Signup";
 import CharacterDetailed from "./pages/CharacterDetailed";
+import Signup from "./pages/Signup/Signup";
+import { useAppDispatch } from "./hooks/hooks";
+import { checkAuth } from "./store/actions/authActionCreators";
 
 function App() {
-  // const {} = useAppSelector((state) => state.characterReducer.characters);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(checkAuth());
+  }, [])
+
   return (
     <>
       <Header />
