@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { Character } from "../../models/Character";
-import { fetchCharacters } from "./ActionCreators";
+import { GetCharactersProps, fetchCharacters } from "./ActionCreators";
 
 interface CharacterState {
   characters: Character[];
@@ -25,10 +25,10 @@ export const CharacterSlice = createSlice({
       })
       .addCase(
         fetchCharacters.fulfilled,
-        (state, action: PayloadAction<Character[]>) => {
+        (state, action: PayloadAction<GetCharactersProps>) => {
           state.isLoading = false;
           state.error = "";
-          state.characters = action.payload;
+          state.characters = action.payload.data;
         }
       )
       .addCase(
