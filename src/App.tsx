@@ -13,11 +13,9 @@ import { checkAuth } from "./store/actions/authActionCreators";
 
 function App() {
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     dispatch(checkAuth());
   }, [])
-
   return (
     <>
       <Header />

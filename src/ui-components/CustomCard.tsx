@@ -10,31 +10,24 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
-interface CustomCardProps {
-  character: Character;
-  key: string;
-}
-
-const CustomCard = ({ character }: CustomCardProps) => {
+const CustomCard = ({ character }: { character: Character }) => {
   return (
     <Card sx={{ maxWidth: 200, display: "flex", flexDirection: "column" }}>
       <CardMedia
         component="img"
         alt="no_photo"
         height="250"
-        image={character.image}
+        image={character.attributes.image ? character.attributes.image : ""}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {character.name}
+          {character.attributes.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {character.species}, {character.gender}
+          {character.attributes.species}, {character.attributes.gender}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {character.wizard
-            ? "обладает магическими способностями"
-            : "не обладает магическими способностями"}
+          {character.attributes.blood_status}
         </Typography>
       </CardContent>
       <CardActions style={{ marginTop: "auto" }}>

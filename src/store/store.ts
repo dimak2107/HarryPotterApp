@@ -6,8 +6,11 @@ const rootReducer = combineReducers({
   characterReducer,
   authReducer,
 });
+
 export const setupStore = () => {
-  return configureStore({ reducer: rootReducer });
+  return configureStore({
+    reducer: rootReducer,
+  });
 };
 
 export type RootState = ReturnType<typeof rootReducer>;
