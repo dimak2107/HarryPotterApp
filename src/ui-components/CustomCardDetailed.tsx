@@ -8,7 +8,7 @@ import {
 import React from "react";
 import { Character } from "../models/Character";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
-import { setCharacterToFavorite, removeCharacterFromFavorite } from "../store/reducers/ActionCreators";
+import { setCharacterToFavorite, removeCharacterFromFavorite } from "../store/actions/favActionCreators";
 
 interface CustomCardDetailedProps {
   character: Character;

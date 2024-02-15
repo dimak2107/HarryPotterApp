@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import { useAppSelector } from "../../hooks/hooks"
 import CustomCard from "../../ui-components/CustomCard";
 
-import "./Favorites.css";
+import styles from "./FavoritesPage.module.css";
 
-const Favorites1 = () => {
+const FavoritesPage = () => {
     const [characters, setCharacters] = useState([]);
     const storeData = useAppSelector(
         (state) => state.favoriteReducer
@@ -19,15 +19,15 @@ const Favorites1 = () => {
         })
         setCharacters(res);
     }, []);
-
+    console.log(typeof(characters));
 
     return (
         <div>
-            <section className="favorite__content">
-                <header className="favorites__flex-center">
+            <section className={styles.favorite__content}>
+                <header className={styles.favorites__flex_center}>
                     <h1>Favorites</h1>
                 </header>
-                <div className="favorites__flex">
+                <div className={styles.favorites__flex}>
                     {characters &&
                         characters.map((item: any) => (
                             <CustomCard character={item.character} key={item.character.id} />
@@ -39,4 +39,4 @@ const Favorites1 = () => {
     );
 };
 
-export default Favorites1;
+export default FavoritesPage;

@@ -2,7 +2,7 @@ import { omit } from "lodash";
 
 const initialState = {};
 
-const favoriteReducer = (state: any = initialState, action: any) => {
+const favoriteReducer = (state: object = initialState, action: any) => {
     switch (action.type) {
         case 'ADD_CHARACTER_TO_FAVORITE': 
             return {
