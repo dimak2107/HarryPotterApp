@@ -15,7 +15,6 @@ export const fetchCharacters = createAsyncThunk(
       const { data } = await axios.get<GetCharactersProps>(
         `https://api.potterdb.com/v1/characters/?page[size]=20;filter[name_cont]=${name}`
       );
-      console.log(data);
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue("ERROR");

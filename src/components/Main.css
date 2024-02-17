@@ -4,6 +4,7 @@
 }
 
 .main__grid {
+  padding-top: 16px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
@@ -15,3 +16,28 @@
   justify-content: center;
   align-items: center;
 }
+
+.main__header {
+  font-size: 18px;
+  padding: 6px;
+}
+
+/* .main__flex-raw {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__book {
+  margin: 4px;
+  background-color: black;
+}
+
+.card__book-media {
+  box-sizing: border-box;
+  height: 150px;
+  max-width: 200px;
+}
+
+.active {
+  border: 5px solid green;
+} */
