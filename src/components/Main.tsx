@@ -4,6 +4,7 @@ import { fetchCharacters } from "../store/reducers/ActionCreators";
 import CustomCard from "../ui-components/CustomCard";
 import "./Main.css";
 import debounce from "lodash.debounce";
+import { addRequest } from "../store/reducers/RequestsReducer";
 
 const Main = () => {
   const [name, setName] = useState("");
@@ -17,7 +18,11 @@ const Main = () => {
   };
 
   const makeDebouncedRequest = useMemo(
-    () => debounce((name: string) => dispatch(fetchCharacters(name)), 500),
+    () =>
+      debounce((name: string) => {
+        dispatch(fetchCharacters(name));
+        name.length > 3 && dispatch(addRequest(name));
+      }, 500),
     []
   );
 
@@ -31,7 +36,13 @@ const Main = () => {
         <header className="main__flex-center main__content">
           <h2>Characters of HP</h2>
           <div>
-            <input type="text" value={name} onChange={inputHandler} />
+            <input
+              className="input-styled"
+              type="text"
+              placeholder="Поиск по имени персонажа..."
+              value={name}
+              onChange={inputHandler}
+            />
           </div>
         </header>
 

@@ -1,0 +1,34 @@
+.app__header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.app__header-links {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.links {
+  width: 100px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.links:hover {
+  background-color: beige;
+  font-weight: bold;
+}
+
+.app__header-button {
+  width: 60px;
+  cursor: pointer;
+  background-color: white;
+  border: none;
+}
+
+.app__header-button:hover {
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}

@@ -1,0 +1,17 @@
+.input-styled {
+  line-height: 1.5rem;
+  border: none;
+  background: beige;
+  border-radius: 10px;
+  width: 250px;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.text-styled {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5rem;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
