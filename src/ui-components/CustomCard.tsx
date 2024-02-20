@@ -9,15 +9,18 @@ import {
   Button,
 } from "@mui/material";
 import { Link } from "react-router-dom";
+import Hogwarts from "./hqdefault.jpg";
 
 const CustomCard = ({ character }: { character: Character }) => {
   return (
-    <Card sx={{ maxWidth: 200, display: "flex", flexDirection: "column" }}>
+    <Card className="main__card">
       <CardMedia
         component="img"
-        alt="no_photo"
+        alt="no_photo_available"
         height="250"
-        image={character.attributes.image ? character.attributes.image : ""}
+        image={
+          character.attributes.image ? character.attributes.image : Hogwarts
+        }
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -30,9 +33,11 @@ const CustomCard = ({ character }: { character: Character }) => {
           {character.attributes.blood_status}
         </Typography>
       </CardContent>
-      <CardActions style={{ marginTop: "auto" }}>
+      <CardActions className="main__card-buttons">
         <Button size="small" fullWidth>
-          <Link to={`/characters/${character.id}`}>Подробнее</Link>
+          <Link to={`/characters/${character.id}`} className="card-button">
+            Подробнее
+          </Link>
         </Button>
       </CardActions>
     </Card>

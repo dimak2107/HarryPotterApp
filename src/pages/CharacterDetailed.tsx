@@ -3,29 +3,16 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Character } from "../models/Character";
 import CustomCardDetailed from "../ui-components/CustomCardDetailed";
-
-interface GetByIdProps {
-  data: Character;
-  links: { self: string };
-  meta: { copyright: string; generated_at: string };
-}
+import getCharacterById from "../services/GetCharacterById";
 
 const CharacterDetailed = () => {
   const [character, setCharacter] = useState<Character>();
   const { id } = useParams();
-  async function getCharacterById(characterID: string) {
-    try {
-      const res = await axios.get<GetByIdProps>(
-        `https://api.potterdb.com/v1/characters/${characterID}`
-      );
-      setCharacter(() => res.data.data);
-    } catch (e) {
-      return console.log("oh no. an error");
-    }
-  }
-
   useEffect(() => {
-    id && getCharacterById(id);
+    (async function () {
+      const res = id && (await getCharacterById(id));
+      res && typeof res !== "string" && setCharacter(res);
+    })();
   }, [id]);
 
   return (
