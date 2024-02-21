@@ -22,22 +22,22 @@
   padding: 6px;
 }
 
-/* .main__flex-raw {
+.main__card {
+  max-width: 200;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
-.card__book {
-  margin: 4px;
-  background-color: black;
+.main__card-buttons {
+  margin-top: auto;
 }
 
-.card__book-media {
-  box-sizing: border-box;
-  height: 150px;
-  max-width: 200px;
+.card-button {
+  text-decoration: none;
 }
 
-.active {
-  border: 5px solid green;
-} */
+.main__card_detailed {
+  max-width: 300;
+  display: flex;
+  flex-direction: column;
+}
