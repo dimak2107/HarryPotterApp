@@ -1,9 +1,9 @@
-import { Box, Button, OutlinedInput, Typography } from "@mui/material";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Box, Button, OutlinedInput, Typography } from "@mui/material"
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
-import { registration } from "../../store/actions/authActionCreators";
-import styles from './RegistrationForm.module.css';
+import { login } from "../../store/actions/authActionCreators";
+import styles from './LoginForm.module.css';
 import ErrorDisplay from "../../ui-components/ErrorDisplay";
 import PasswordInput from "../../ui-components/PasswordInput/PasswordInput";
 
@@ -12,15 +12,15 @@ type Inputs = {
   password: string;
 }
 
-function RegistrationForm() {
+function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const { register, handleSubmit, formState: {errors} } = useForm<Inputs>();
+  const {register, handleSubmit, formState: {errors}} = useForm<Inputs>();
   const dispatch = useAppDispatch();
   const { error } = useAppSelector(state => state.authReducer);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const {username, password} = data;
-    dispatch(registration(username, password));
+    dispatch(login(username, password));
   }
 
   return (
@@ -29,7 +29,7 @@ function RegistrationForm() {
       className={styles.form}
     >
       <OutlinedInput
-        {...register('username', { required: true, minLength: 5 })}
+        {...register('username', {required: true})}
         type="text"
         className={styles.input}
       />
@@ -37,9 +37,9 @@ function RegistrationForm() {
       <Box sx={{marginTop: '3px'}}>
         <PasswordInput
           register={register}
+          validatingObj={{required: true}}
           setShowPassword={setShowPassword}
           showPassword={showPassword}
-          validatingObj={{ required: true, minLength: 5 }}
         />
       </Box>
       <ErrorDisplay fieldWithError={errors.password} />
@@ -49,7 +49,7 @@ function RegistrationForm() {
         className={styles.input}
         type="submit"
       >
-        Зарегистрироваться
+        Войти
       </Button>
       {error && (
         <Typography
@@ -65,4 +65,4 @@ function RegistrationForm() {
   )
 }
 
-export default RegistrationForm;
+export default LoginForm

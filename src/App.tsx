@@ -4,13 +4,14 @@ import { Routes, Route } from "react-router-dom";
 import Favorites from "./pages/Favorites";
 import History from "./pages/History";
 import Homepage from "./pages/Homepage";
-import Signin from "./pages/Signin";
+import Signin from "./pages/Signin/Signin";
 import CharacterDetailed from "./pages/CharacterDetailed";
 import Signup from "./pages/Signup/Signup";
 import { useAppDispatch } from "./hooks/hooks";
 import { checkAuth } from "./store/actions/authActionCreators";
 import RequireAuth from "./hoc/RequireAuth";
 import "./App.css";
+import RequireNoAuth from "./hoc/RequireNoAuth";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -22,8 +23,22 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
+        <Route
+          path="/signup"
+          element={
+            <RequireNoAuth>
+              <Signup />
+            </RequireNoAuth>
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <RequireNoAuth>
+              <Signin />
+            </RequireNoAuth>
+          }
+        />
         <Route
           path="/favorites"
           element={

@@ -53,12 +53,21 @@ export const authSlice = createSlice({
       state.isLoading = false;
     },
     notAuthorized(state) {
+      state.user = { username: "", id: null };
+      state.isAuth = false;
       state.isLoading = false;
     },
     logout(state) {
-      state.user = { username: "", id: null };
-      state.isAuth = false;
+      state.isLoading = true;
+      state.error = "";
     },
+    logoutSuccess(state) {
+      state.isLoading = false;
+    },
+    logoutError(state, action: PayloadAction<string>) {
+      state.isLoading = false;
+      state.error = action.payload;
+    }
   },
 });
 
