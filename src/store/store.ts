@@ -1,11 +1,13 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import characterReducer from "./reducers/CharactersSlice";
 import authReducer from "./reducers/AuthSlice";
-import favoriteReducer from "./reducers/FavoriteReducer";
+import booksReducer from "./reducers/BookSlice"
+import favoriteReducer from "./reducers/FavoriteSlice"
 
 const rootReducer = combineReducers({
   characterReducer,
   authReducer,
+  booksReducer,
   favoriteReducer
 });
 

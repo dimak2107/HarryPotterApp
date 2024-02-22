@@ -1,3 +1,5 @@
+import { Character } from "../models/Character";
+import FavoriteCharacterButton from "../components/FavoriteCharacterButton/FavoriteCharacterButton";
 import {
   Card,
   CardActions,
@@ -5,34 +7,12 @@ import {
   CardMedia,
   Typography,
 } from "@mui/material";
-import React from "react";
-import { Character } from "../models/Character";
-import { useAppDispatch, useAppSelector } from "../hooks/hooks";
-import { setCharacterToFavorite, removeCharacterFromFavorite } from "../store/actions/favActionCreators";
 
 interface CustomCardDetailedProps {
   character: Character;
 }
 
 const CustomCardDetailed = ({ character }: CustomCardDetailedProps) => {
-  const dispatch = useAppDispatch();
-  const storeData = useAppSelector(
-    (state) => state.favoriteReducer
-  );
-  const id = character.id;
-  
-  const set = () => {
-    dispatch(setCharacterToFavorite({
-      [id]: {
-        character
-      }
-    }));
-  };
-
-  const remove = () => {
-    dispatch(removeCharacterFromFavorite(id));
-  };
-
   return (
     character && (
       <Card sx={{ maxWidth: 300, display: "flex", flexDirection: "column" }}>
@@ -42,9 +22,6 @@ const CustomCardDetailed = ({ character }: CustomCardDetailedProps) => {
           width="200"
           image={character.attributes.image ? character.attributes.image : ""}
         />
-        {storeData[id] 
-          ? <button onClick={remove}>Remove from Favorites</button> 
-          : <button onClick={set}>Add to Favorites</button>}
         <CardContent>
           <Typography gutterBottom variant="h4" component="div">
             {character.attributes.name}
@@ -69,7 +46,9 @@ const CustomCardDetailed = ({ character }: CustomCardDetailedProps) => {
             {character.attributes.wands && character.attributes.wands[0]}
           </Typography>
         </CardContent>
-        <CardActions></CardActions>
+        <CardActions>
+              <FavoriteCharacterButton character={character}/>
+        </CardActions>
       </Card>
     )
   );

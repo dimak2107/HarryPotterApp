@@ -1,39 +1,47 @@
-import React, { useEffect, useState } from "react";
-
+import BookCard from "../../ui-components/BookCard/BookCard";
 import { useAppSelector } from "../../hooks/hooks"
 import CustomCard from "../../ui-components/CustomCard";
 
 import styles from "./FavoritesPage.module.css";
+import { Typography } from "@mui/material";
+import Grid from '@mui/material/Unstable_Grid2';
 
 const FavoritesPage = () => {
-    const [characters, setCharacters] = useState([]);
-    const storeData = useAppSelector(
-        (state) => state.favoriteReducer
-    )
-
-
-    useEffect(() => {
-        const arr = Object.entries(storeData);
-        const res: any = arr.map((item, i) => {
-            return item[1];
-        })
-        setCharacters(res);
-    }, []);
-    console.log(typeof(characters));
+    const { books, characters } = useAppSelector(state => state.favoriteReducer);
 
     return (
         <div>
             <section className={styles.favorite__content}>
-                <header className={styles.favorites__flex_center}>
-                    <h1>Favorites</h1>
-                </header>
-                <div className={styles.favorites__flex}>
-                    {characters &&
-                        characters.map((item: any) => (
-                            <CustomCard character={item.character} key={item.character.id} />
-                        ))
-                    }
-                </div>
+                <Typography
+                    variant="h6"
+                    component="h2"
+                    sx={{ textAlign: 'center' }}>
+                    Characters of HP
+                </Typography>
+                <Grid container spacing={2}>
+                    {characters.length > 0 ?
+                        characters.map((item) => (
+                            <Grid spacing={3} key={item.id}>
+                                <CustomCard character={item} />
+                            </Grid>
+                        )) : 'Тут пока пусто..'}
+                </Grid>
+            </section>
+            <section className={styles.favorite__content}>
+                <Typography
+                    variant="h6"
+                    component="h2"
+                    sx={{ textAlign: 'center' }}>
+                    Books of HP
+                </Typography>
+                <Grid container spacing={2}>
+                    {books.length > 0 ?
+                        books.map((item) => (
+                            <Grid spacing={3} key={item.id}>
+                                <BookCard book={item} />
+                            </Grid>
+                        )) : 'Тут пока пусто..'}
+                </Grid>
             </section>
         </div>
     );

@@ -1,5 +1,8 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import { Character } from "../models/Character";
+import FavoriteCharacterButton from "../components/FavoriteCharacterButton/FavoriteCharacterButton";
+
+import ArticleIcon from '@mui/icons-material/Article';
 import {
   Card,
   CardMedia,
@@ -8,7 +11,7 @@ import {
   CardActions,
   Button,
 } from "@mui/material";
-import { Link } from "react-router-dom";
+
 
 const CustomCard = ({ character }: { character: Character }) => {
   return (
@@ -31,9 +34,10 @@ const CustomCard = ({ character }: { character: Character }) => {
         </Typography>
       </CardContent>
       <CardActions style={{ marginTop: "auto" }}>
-        <Button size="small" fullWidth>
+        <Button size="small" fullWidth startIcon={<ArticleIcon />}>
           <Link to={`/characters/${character.id}`}>Подробнее</Link>
         </Button>
+        <FavoriteCharacterButton character={character}/>
       </CardActions>
     </Card>
   );

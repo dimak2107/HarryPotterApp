@@ -27,7 +27,6 @@ const CharacterDetailed = () => {
   useEffect(() => {
     id && getCharacterById(id);
   }, [id]);
-
   return (
     <main className="main__content">
       <article className="main__flex-center">
